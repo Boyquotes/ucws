@@ -1,0 +1,584 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://npcs/hostile/Solus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestMovingPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/materials/bricks059.material" type="Material" id=6]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 250, 250 )
+
+[sub_resource type="OpenSimplexNoise" id=2]
+octaves = 9
+period = 16.0
+persistence = 1.0
+lacunarity = 3.0
+
+[sub_resource type="NoiseTexture" id=3]
+flags = 11
+width = 2048
+height = 2048
+noise = SubResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=4]
+lacunarity = 1.45
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+as_normalmap = true
+bump_strength = 24.0
+noise = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.439216, 0.521569, 0.278431, 1 )
+albedo_texture = SubResource( 3 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 5 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 125, 0.1, 125 )
+
+[sub_resource type="CubeMesh" id=16]
+size = Vector3( 11, 6, 6 )
+
+[sub_resource type="ConcavePolygonShape" id=17]
+data = PoolVector3Array( -5.5, 3, 3, 5.5, 3, 3, -5.5, -3, 3, 5.5, 3, 3, 5.5, -3, 3, -5.5, -3, 3, 5.5, 3, -3, -5.5, 3, -3, 5.5, -3, -3, -5.5, 3, -3, -5.5, -3, -3, 5.5, -3, -3, 5.5, 3, 3, 5.5, 3, -3, 5.5, -3, 3, 5.5, 3, -3, 5.5, -3, -3, 5.5, -3, 3, -5.5, 3, -3, -5.5, 3, 3, -5.5, -3, -3, -5.5, 3, 3, -5.5, -3, 3, -5.5, -3, -3, 5.5, 3, 3, -5.5, 3, 3, 5.5, 3, -3, -5.5, 3, 3, -5.5, 3, -3, 5.5, 3, -3, -5.5, -3, 3, 5.5, -3, 3, -5.5, -3, -3, 5.5, -3, 3, 5.5, -3, -3, -5.5, -3, -3 )
+
+[sub_resource type="OpenSimplexNoise" id=18]
+octaves = 1
+period = 26.8
+
+[sub_resource type="NoiseTexture" id=19]
+noise = SubResource( 18 )
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_color = Color( 0.741176, 0.219608, 0.219608, 1 )
+albedo_texture = SubResource( 19 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 61.8198
+
+[sub_resource type="OpenSimplexNoise" id=21]
+octaves = 1
+period = 21.4
+
+[sub_resource type="NoiseTexture" id=22]
+noise = SubResource( 21 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_color = Color( 0, 0.133333, 1, 1 )
+albedo_texture = SubResource( 22 )
+uv1_triplanar = true
+
+[sub_resource type="OpenSimplexNoise" id=24]
+
+[sub_resource type="NoiseTexture" id=25]
+noise = SubResource( 24 )
+
+[sub_resource type="SpatialMaterial" id=26]
+albedo_color = Color( 0, 1, 0.0156863, 1 )
+albedo_texture = SubResource( 25 )
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id=9]
+left_to_right = 0.0
+size = Vector3( 7, 3, 10 )
+
+[sub_resource type="ConvexPolygonShape" id=10]
+points = PoolVector3Array( -3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, -1.5, 5, 3.5, -1.5, -5, 3.5, -1.5, 5, -3.5, -1.5, -5, -3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, 1.5, -5, -3.5, 1.5, 5, 3.5, -1.5, 5, -3.5, -1.5, -5, 3.5, -1.5, -5, -3.5, -1.5, 5, -3.5, -1.5, 5, 3.5, -1.5, 5, -3.5, -1.5, -5, 3.5, -1.5, -5 )
+
+[sub_resource type="SphereMesh" id=11]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SphereShape" id=12]
+radius = 2.0
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 2, 1, 6 )
+
+[sub_resource type="ConcavePolygonShape" id=15]
+data = PoolVector3Array( -1, 0.5, 3, 1, 0.5, 3, -1, -0.5, 3, 1, 0.5, 3, 1, -0.5, 3, -1, -0.5, 3, 1, 0.5, -3, -1, 0.5, -3, 1, -0.5, -3, -1, 0.5, -3, -1, -0.5, -3, 1, -0.5, -3, 1, 0.5, 3, 1, 0.5, -3, 1, -0.5, 3, 1, 0.5, -3, 1, -0.5, -3, 1, -0.5, 3, -1, 0.5, -3, -1, 0.5, 3, -1, -0.5, -3, -1, 0.5, 3, -1, -0.5, 3, -1, -0.5, -3, 1, 0.5, 3, -1, 0.5, 3, 1, 0.5, -3, -1, 0.5, 3, -1, 0.5, -3, 1, 0.5, -3, -1, -0.5, 3, 1, -0.5, 3, -1, -0.5, -3, 1, -0.5, 3, 1, -0.5, -3, -1, -0.5, -3 )
+
+[node name="Level" type="Node"]
+
+[node name="TestFloor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+collision_layer = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="TestFloor"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="TestFloor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05519, 1.88138, 4.36925 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.616195, -0.274607, 0.738169, 0.78751, -0.201155, 0.582551, -0.011486, 0.94028, 0.340207, -1.55935, 6.58767, 3.86212 )
+visible = false
+light_color = Color( 1, 1, 0.956863, 1 )
+shadow_enabled = true
+
+[node name="Testnodes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55, 0 )
+visible = false
+
+[node name="StaticBody" type="StaticBody" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5844, 1.44277, -8.34786 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/StaticBody"]
+mesh = SubResource( 16 )
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/StaticBody"]
+shape = SubResource( 17 )
+
+[node name="StaticBody3" type="StaticBody" parent="Testnodes"]
+transform = Transform( 2.98023e-08, 1, 0, -1, 2.98023e-08, 0, 0, 0, 1, -8.05598, 9.98158, -8.34786 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/StaticBody3"]
+mesh = SubResource( 16 )
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/StaticBody3"]
+shape = SubResource( 17 )
+
+[node name="StaticBody2" type="StaticBody" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.58444, 3, -19.3479 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/StaticBody2"]
+mesh = SubResource( 16 )
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/StaticBody2"]
+shape = SubResource( 17 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5389, 4.22688, -8.41063 )
+material_override = SubResource( 20 )
+use_collision = true
+
+[node name="First" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24688, 0, 0 )
+width = 10.347
+height = 0.42487
+depth = 6.18659
+
+[node name="SolusGround" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473989, 2.08303, -6.3912 )
+width = 10.8222
+height = 0.42487
+depth = 6.18659
+
+[node name="BigWall" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.94919, 4.01809, -3.03427 )
+width = 15.7887
+height = 0.42487
+depth = 8.23861
+
+[node name="SolusOuter" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.458351, 4.0227, -9.72638 )
+width = 10.8364
+height = 0.42487
+depth = 4.23985
+
+[node name="SolusBack" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 5.47865, 4.03538, -6.57563 )
+width = 6.51352
+height = 0.42487
+depth = 4.23985
+
+[node name="SolusFront" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 1.60389, 4.03538, -7.86036 )
+width = 3.30626
+height = 0.42487
+depth = 4.23985
+
+[node name="OuterBot" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.445, -0.606, -1.7554 )
+width = 7.77343
+height = 0.466
+depth = 4.84947
+
+[node name="OuterTop" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4446, 1.77346, -10.534 )
+width = 7.77343
+height = 0.539125
+depth = 4.84947
+
+[node name="OuterWall" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2722, 1.09091, -3.56594 )
+width = 0.398595
+height = 3.70728
+depth = 8.45154
+
+[node name="OuterWall2" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12999, 3.78116, -8.41574 )
+width = 0.398595
+height = 3.70728
+depth = 2.97589
+
+[node name="OuterMid" type="CSGBox" parent="Testnodes/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -14.445, 0.598, -6.1434 )
+width = 7.77343
+height = 0.539125
+depth = 4.84947
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16354, 0, -11.9929 )
+material_override = SubResource( 23 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46076, 8.35421, 5.62522 )
+width = 2.51774
+height = 0.424765
+
+[node name="CSGBox7" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.58869, 9.38274, 5.62522 )
+width = 2.51774
+height = 0.424765
+
+[node name="CSGBox6" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.97119, 11.8129, -0.433965 )
+width = 2.51774
+height = 0.424765
+depth = 2.2542
+
+[node name="CSGBox4" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46076, 10.7878, -0.386498 )
+width = 2.51774
+height = 0.424765
+
+[node name="CSGBox5" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3353, 8.38518, -0.569636 )
+width = 2.78568
+height = 0.424765
+
+[node name="CSGBox3" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19592, 4.95871, -0.328243 )
+width = 4.71873
+height = 0.424765
+
+[node name="CSGBox2" type="CSGBox" parent="Testnodes/CSGCombiner2"]
+transform = Transform( 2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 3.06122, 6.43722, 3.03098 )
+width = 4.71873
+height = 0.424765
+
+[node name="CSGCombiner3" type="CSGCombiner" parent="Testnodes"]
+material_override = SubResource( 26 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Testnodes/CSGCombiner3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8511, 6.49765, -4.29478 )
+width = 5.57673
+height = 0.239897
+
+[node name="CSGCombiner4" type="CSGCombiner" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701, 0 )
+material_override = SubResource( 26 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Testnodes/CSGCombiner4"]
+transform = Transform( -4.37114e-08, 0, -1, 0.5, 0.866025, -2.18557e-08, 0.866025, -0.5, -3.78552e-08, -7.851, 17.17, 5.38 )
+width = 5.57673
+height = 0.239897
+depth = 2.06424
+
+[node name="CSGBox3" type="CSGBox" parent="Testnodes/CSGCombiner4"]
+transform = Transform( -4.37114e-08, 0, -1, 0.5, 0.866025, -2.18557e-08, 0.866025, -0.5, -3.78552e-08, -7.851, 17.17, 5.38 )
+width = 5.57673
+height = 0.239897
+depth = 2.06424
+
+[node name="CSGBox2" type="CSGBox" parent="Testnodes/CSGCombiner4"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.8511, 15.7869, 1.70447 )
+width = 2.65112
+height = 0.239897
+depth = 2.06424
+
+[node name="CSGCombiner5" type="CSGCombiner" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1912, 5.8027, -0.617047 )
+material_override = SubResource( 26 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Testnodes/CSGCombiner5"]
+transform = Transform( -4.37114e-08, 0, -1, 0.5, 0.866025, -2.18557e-08, 0.866025, -0.5, -3.78552e-08, -0.131559, 0.379668, 1.00079 )
+width = 5.57673
+height = 0.239897
+depth = 2.06424
+
+[node name="CSGBox3" type="CSGBox" parent="Testnodes/CSGCombiner5"]
+transform = Transform( -4.37114e-08, 0, -1, 0.5, 0.866025, -2.18557e-08, 0.866025, -0.5, -3.78552e-08, -0.131559, 0.379668, 1.00079 )
+width = 5.57673
+height = 0.239897
+depth = 2.06424
+
+[node name="CSGBox2" type="CSGBox" parent="Testnodes/CSGCombiner5"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.131664, -1.00347, -2.67474 )
+width = 2.65112
+height = 0.239897
+depth = 2.06424
+
+[node name="Solus" parent="Testnodes" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9275, 6.5694, -17.0506 )
+
+[node name="TestRamp" type="StaticBody" parent="Testnodes"]
+transform = Transform( 0.99775, -0.0670397, 0, 0.0670397, 0.99775, 0, 0, 0, 1, -9.298, 0.864, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/TestRamp"]
+mesh = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/TestRamp"]
+shape = SubResource( 10 )
+
+[node name="TestRamp3" type="StaticBody" parent="Testnodes"]
+transform = Transform( 0.998822, 0.048519, 0, -0.048519, 0.998822, 0, 0, 0, 1, -9.29798, 0.864312, 11.5349 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/TestRamp3"]
+mesh = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/TestRamp3"]
+shape = SubResource( 10 )
+
+[node name="TestRamp2" type="StaticBody" parent="Testnodes"]
+transform = Transform( 0.743997, 0.668184, 0, -0.668184, 0.743997, 0, 0, 0, 1, -9.29798, 0.864312, 22.4647 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/TestRamp2"]
+mesh = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/TestRamp2"]
+shape = SubResource( 10 )
+
+[node name="TestMovingPlatform" parent="Testnodes" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7879, 1.5236, -19.9981 )
+
+[node name="TestBall" type="StaticBody" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.588289, 19.429 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/TestBall"]
+mesh = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/TestBall"]
+shape = SubResource( 12 )
+
+[node name="TestWall3" type="StaticBody" parent="Testnodes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395279, -0.471119, 2.15664 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Testnodes/TestWall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78857, 0 )
+mesh = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Testnodes/TestWall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78857, 0 )
+shape = SubResource( 15 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+material_override = ExtResource( 6 )
+use_collision = true
+collision_layer = 2
+
+[node name="walls" type="CSGCombiner" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 3.41924, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner/walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+width = 40.0
+height = 3.0
+depth = 40.0
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner/walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+operation = 2
+width = 38.0
+height = 5.0
+depth = 38.0
+
+[node name="centerpad" type="CSGCombiner" parent="CSGCombiner"]
+transform = Transform( 4.33013, 0, -2.5, 0, 0.5, 0, 2.5, 0, 4.33013, 0, 0.5, 0 )
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner/centerpad"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+height = 0.5
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner/centerpad"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -1, 0 )
+operation = 1
+height = 0.5
+
+[node name="CSGBox5" type="CSGBox" parent="CSGCombiner/centerpad"]
+transform = Transform( -0.374607, 0, 0.927184, 0, 1, 0, -0.927184, 0, -0.374607, 0, -1, 0 )
+operation = 1
+height = 0.5
+
+[node name="CSGBox6" type="CSGBox" parent="CSGCombiner/centerpad"]
+transform = Transform( 0.390731, 0, 0.920505, 0, 1, 0, -0.920505, 0, 0.390731, 0, -1, 0 )
+operation = 1
+height = 0.5
+
+[node name="blockage" type="CSGCombiner" parent="CSGCombiner"]
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner/blockage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78623, 0.4, -8.33831 )
+width = 8.0
+height = 1.2
+depth = 0.4
+
+[node name="window" type="CSGCombiner" parent="CSGCombiner/blockage"]
+transform = Transform( 1, 0, 0, 0, 0.573576, -0.819152, 0, 0.819152, 0.573576, -10, 2.7, -2.99503 )
+
+[node name="CSGBox10" type="CSGBox" parent="CSGCombiner/blockage/window"]
+width = 0.4
+height = 0.8
+depth = 1.8
+
+[node name="CSGBox11" type="CSGBox" parent="CSGCombiner/blockage/window"]
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0.0492854, -0.94211 )
+operation = 2
+width = 0.4
+height = 0.8
+depth = 1.8
+
+[node name="CSGBox9" type="CSGBox" parent="CSGCombiner/blockage/window"]
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, -1.81845, -1.7616 )
+width = 0.4
+height = 0.4
+depth = 5.4
+
+[node name="CSGBox8" type="CSGBox" parent="CSGCombiner/blockage/window"]
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, -3.36711, 0.450109 )
+width = 0.4
+height = 1.14759
+depth = 5.4
+
+[node name="roof" type="CSGCombiner" parent="CSGCombiner/blockage"]
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner/blockage/roof"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6, 3.2, -3.9 )
+width = 8.8
+height = 0.2
+depth = 33.4
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner/blockage/roof"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1, 3, 8.8 )
+operation = 2
+width = 5.4
+depth = 4.8
+
+[node name="building" type="CSGCombiner" parent="CSGCombiner/blockage"]
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, -12.2 )
+width = 0.4
+height = 3.6
+depth = 8.2
+
+[node name="CSGBox8" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.1, 1.5, 13 )
+width = 0.4
+height = 3.6
+depth = 1.8
+
+[node name="CSGBox9" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.6, 1.5, 13 )
+width = 0.4
+height = 3.6
+depth = 3.6
+
+[node name="CSGBox10" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0.866025, 0.5, -3.78552e-08, 0.5, -0.866025, -2.18557e-08, -16.1, 1.705, 8.937 )
+width = 0.2
+height = 6.0
+depth = 5.4
+
+[node name="CSGBox11" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0.906308, 0.422618, -3.9616e-08, 0.422618, -0.906308, -1.84732e-08, -16.1, 0.205, 11.737 )
+width = 0.2
+height = 1.8
+depth = 5.4
+
+[node name="CSGBox7" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 4.2 )
+width = 0.4
+height = 3.6
+depth = 14.0
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.9, 1.5, -16.1 )
+width = 0.4
+height = 3.6
+depth = 6.0
+
+[node name="CSGBox5" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.9, 1.5, -12.1 )
+width = 0.4
+height = 3.6
+depth = 5.8
+
+[node name="CSGBox6" type="CSGBox" parent="CSGCombiner/blockage/building"]
+transform = Transform( -3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -6.784, 1.327, -14.1 )
+width = 3.6
+height = 0.4
+depth = 7.2
+
+[node name="otherwindow" type="CSGCombiner" parent="CSGCombiner/blockage"]
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner/blockage/otherwindow"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.3, 12 )
+width = 0.4
+depth = 1.6
+
+[node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner/blockage/otherwindow"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.42286, 1.27819, 12.816 )
+operation = 2
+polygon = PoolVector2Array( 0, 0, 0.161231, 0.80521, 0.250214, 1.14582, 0.68865, 1.30375, 0.921978, 1.08273, 1.23997, 1.12643, 1.62732, 0.0027867, 1, 0 )
+
+[node name="otherwindow2" type="CSGCombiner" parent="CSGCombiner/blockage"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.7308, 4.76837e-07, 12.9417 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner/blockage/otherwindow2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 2.3, -0.4 )
+width = 0.369
+depth = 4.0
+
+[node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner/blockage/otherwindow2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.777139, 1.27819, 0.715999 )
+operation = 2
+polygon = PoolVector2Array( -0.941233, -0.0803232, -0.255789, 1.16658, 0.250214, 1.14582, 0.68865, 1.30375, 1.22046, 1.67058, 1.86659, 1.34918, 2.39867, 1.54871, 2.54372, 1.18904, 2.98442, -0.0113518, 1, 0 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( 0.854169, -0.0726096, 0.514901, -0.186816, 0.881243, 0.434178, -0.485279, -0.467053, 0.739166, 0, 12.3158, 0 )
+light_energy = 0.5
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.0
+directional_shadow_bias_split_scale = 0.0
+directional_shadow_max_distance = 53.0

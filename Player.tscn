@@ -1,0 +1,744 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://guns/vesper/Vesper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/others/slide.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape" id=11]
+radius = 0.143
+height = 0.289
+
+[sub_resource type="CapsuleMesh" id=30]
+radius = 0.143
+mid_height = 0.289
+
+[sub_resource type="CapsuleMesh" id=29]
+radius = 0.143
+mid_height = 0.289
+
+[sub_resource type="CapsuleShape" id=25]
+radius = 0.233845
+height = 0.180641
+
+[sub_resource type="CapsuleMesh" id=28]
+radius = 0.234
+mid_height = 0.181
+
+[sub_resource type="Animation" id=14]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animated_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animating")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:mantling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bot:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.321717, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Mid:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Top:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Top:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/TextureRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:sliding")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "climb"
+length = 0.9
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animated_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 7, -0.5 ), Vector3( 0, 0, -1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animating")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bot:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.01, 0.55, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.321717, 0 ), Vector3( 0, 1.3024, 0 ), Vector3( 0, 1.3024, 0 ), Vector3( 0, 0.321717, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mid:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.01, 0.55, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ), Vector3( 0, 1.24209, 0 ), Vector3( 0, 1.24209, 0 ), Vector3( 0, 0.884188, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:mantling")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "mantle"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animated_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 4.5, -0.5 ), Vector3( 0, 0, -1.8 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:animating")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bot:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.01, 0.4, 0.49, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.321717, 0 ), Vector3( 0, 1.3024, 0 ), Vector3( 0, 1.3024, 0 ), Vector3( 0, 0.407, 0 ), Vector3( 0, 0.321717, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mid:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.01, 0.4, 0.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ), Vector3( 0, 1.24209, 0 ), Vector3( 0, 1.24209, 0 ), Vector3( 0, 0.884188, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:mantling")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "slide"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mid:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0756, 0.6804, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ), Vector3( 0, 0.360202, -0.300608 ), Vector3( 0, 0.360202, -0.300608 ), Vector3( 0, 0.884188, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0378, 0.6804, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0 ), Vector3( 0, 0.64922, 0 ), Vector3( 0, 0.64922, 0 ), Vector3( 0, 1.39932, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0756, 0.68, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0.10068 ), Vector3( 0, 0.451, 0.101 ), Vector3( 0, 0.451, 0.101 ), Vector3( 0, 1.39932, 0.10068 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Top:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0567, 0.6426, 0.6804 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 103.766, 0, 0 ), Vector3( 103.766, 0, 0 ), Vector3( 90, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/TextureRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.22, 0.32, 0.46, 0.58, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.894118 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.776471 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:sliding")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:slide_mantle")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:animating")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath(".:animated_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.68, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 1 ), Vector3( 0, 0, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.2 ],
+"method": "slide_time"
+} ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "unslide"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mid:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0.10068 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:animating")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:animated_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Top:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/TextureRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:sliding")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.7 ],
+"method": "slide_time"
+} ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "crouch"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Mid:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.884188, 0 ), Vector3( 0, 0.360202, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Top:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0 ), Vector3( 0, 0.64922, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.39932, 0.10068 ), Vector3( 0, 0.649, 0.101 ) ]
+}
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.340447, 0.444993, 0.467297 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.248358, 0.33042, 0.368748 )
+
+[sub_resource type="BoxShape" id=19]
+extents = Vector3( 0.340447, 0.444993, 0.467297 )
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.248358, 0.33042, 0.179457 )
+
+[sub_resource type="CylinderShape" id=31]
+height = 0.119515
+radius = 0.649713
+
+[node name="Player" type="KinematicBody"]
+collision_mask = 2
+script = ExtResource( 1 )
+slide_mantle = true
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39932, 0.10068 )
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.278837 )
+cull_mask = 524287
+current = true
+near = 0.01
+far = 150.0
+
+[node name="RayCast" type="RayCast" parent="Head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55271e-15, 0, -0.00101641 )
+enabled = true
+cast_to = Vector3( 0, 0, -555 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RootGun" type="Spatial" parent="Head/Camera"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.22 )
+
+[node name="Vesper" parent="Head/Camera/RootGun" instance=ExtResource( 2 )]
+
+[node name="SpringArm" type="SpringArm" parent="Head"]
+spring_length = 2.4
+
+[node name="CameraDebug" type="Camera" parent="Head/SpringArm"]
+
+[node name="Top" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.39932, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Top"]
+layers = 524288
+mesh = SubResource( 30 )
+
+[node name="Mid" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.884188, 0 )
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Mid"]
+layers = 524288
+mesh = SubResource( 29 )
+
+[node name="Bot" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.321717, 0 )
+shape = SubResource( 25 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Bot"]
+layers = 524288
+mesh = SubResource( 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 14 )
+anims/climb = SubResource( 18 )
+anims/mantle = SubResource( 13 )
+anims/slide = SubResource( 26 )
+anims/unslide = SubResource( 27 )
+next/climb = "rest"
+next/mantle = "rest"
+
+[node name="CrouchAnimation" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/crouch = SubResource( 24 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = 175.0
+margin_right = 71.0
+margin_bottom = 189.0
+text = "Press Space to Mantle"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Ammo" type="RichTextLabel" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -306.0
+margin_top = -115.0
+margin_right = -119.0
+margin_bottom = -38.0
+bbcode_enabled = true
+
+[node name="FPS" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 56.0
+margin_right = 20.0
+margin_bottom = 76.0
+text = "FPS"
+align = 1
+
+[node name="STATUS" type="Label" parent="Control"]
+margin_left = 242.0
+margin_top = 112.0
+margin_right = 282.0
+margin_bottom = 126.0
+text = "cum piss"
+
+[node name="MantleColliders" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.115163 )
+
+[node name="Area" type="Area" parent="MantleColliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71875, -0.647772 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="MantleColliders/Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="Area2" type="Area" parent="MantleColliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831218, -0.544101 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="MantleColliders/Area2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="ClimbColliders" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353499, 0.115163 )
+visible = false
+
+[node name="Area" type="Area" parent="ClimbColliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65333, -0.647772 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="ClimbColliders/Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 19 )
+
+[node name="Area2" type="Area" parent="ClimbColliders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994165, -0.544101 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="ClimbColliders/Area2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 20 )
+
+[node name="GroundCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -0.25, 0 )
+collision_mask = 2
+
+[node name="WallArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05068, 0 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="WallArea"]
+shape = SubResource( 31 )
